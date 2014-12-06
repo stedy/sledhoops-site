@@ -39,13 +39,11 @@ def teardown_request(exception):
 @app.route('/', methods = ['GET', 'POST'])
 def start():
     """Main start page showing snapshot of standings"""
-    entries = query_db("""select Team_Away, Team_Home, spread FROM Spreads""",
+    entries = query_db("""select TeamAway, TeamHome, spread FROM Spreads""",
                     one = False)
-    results = query_db("""SELECT Team_Away, Team_Home, spread, LIRApred,
-                        SLEDpred, spreadLIRAdiff, spreadWin,
-                        LIRAWin, SLEDWin, beatSpread,
-                        beatSpread2, beatSpreadSLED, beatSpreadSLED2
-                        FROM PredRes""")
+    results = query_db("""SELECT TeamAway, TeamHome, spread, date,
+                        Predicted
+                        FROM Daily_Predictions""")
     return render_template('main.html', entries = entries, results=results)
 
 @app.route('/headtohead', methods = ['GET', 'POST'])
