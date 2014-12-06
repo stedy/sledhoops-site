@@ -13,5 +13,8 @@ for id in ids:
     print url
     newfile = id + ".png"
     f = open(newfile, 'wb')
-    f.write(urllib2.urlopen(url).read())
-    f.close()
+    try:
+        f.write(urllib2.urlopen(url).read())
+        f.close()
+    except IOError:
+        pass
