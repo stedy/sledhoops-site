@@ -37,7 +37,7 @@ def teardown_request(exception):
         g.db.close()
 
 @app.route('/', methods = ['GET', 'POST'])
-def start():
+def main():
     """Main start page showing snapshot of standings"""
     entries = query_db("""select TeamAway, TeamHome, spread FROM Spreads""",
                     one = False)
