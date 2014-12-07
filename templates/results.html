@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+<h1>Current Prediction</h1>
+<table>
+  <tr><td><b>Home</td><td><b>Away</td><td>Prediction</td></tr>
+  {% for entry in entries %}
+    <tr><td>{{ home[0].teamName }}</td><td>{{ away[0].teamName}}</td><td>{{ entry.Predicted }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

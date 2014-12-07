@@ -48,22 +48,22 @@ def start():
 
 @app.route('/headtohead', methods = ['GET', 'POST'])
 def headtohead():
-    homeentries = query_db("""Select Team_Name, Team_ID from Lookup ORDER BY
-                            Team_Name ASC""", one = False)
-    awayentries = query_db("""Select Team_Name, Team_ID from Lookup ORDER BY
-                            Team_Name ASC""", one = False)
+    homeentries = query_db("""Select teamName, TeamID from Teams ORDER BY
+                            teamName ASC""", one = False)
+    awayentries = query_db("""Select teamName, TeamID from Teams ORDER BY
+                            teamName ASC""", one = False)
     return render_template('headtohead.html', homeentries = homeentries,
             awayentries = awayentries)
 
 @app.route('/results', methods = ['GET', 'POST'])
 def results():
-    entries = query_db("""SELECT Home, Away, Prediction
+    entries = query_db("""SELECT TeamID, OpponentID, Predicted
             FROM Gamematrix WHERE
-            Home = ? AND Away = ?""",
+            TeamID = ? AND OpponentID = ?""",
             [request.form['home'], request.form['away']])
-    away = query_db("""SELECT Team_Name FROM Lookup where Team_ID = ?""",
+    away = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['away']])
-    home = query_db("""SELECT Team_Name FROM Lookup where Team_ID = ?""",
+    home = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['home']])
     return render_template('results.html', entries = entries, home=home,
             away=away)

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="{{url_for('results') }}" method=post>
+<h2>Select Home and Away</h2>
+  <table>
+      <tr><td><b>Home Team</td>
+          <td><b>Away Team</td></tr>
+          <td><select name=home>
+              {% for entry in homeentries %}
+              <option value = "{{ entry.TeamID }}"> {{ entry.teamName }}</option>
+              {% endfor %}
+          </select>
+          <td><select name=away>
+              {% for entry in awayentries %}
+              <option value = "{{ entry.TeamID }}"> {{ entry.teamName }}</option>
+              {% endfor %}
+          </select>
+  </table>
+<br></br>
+  <td><input type=submit value=Compare>
+</form>
+{% endblock %}
