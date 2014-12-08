@@ -36,6 +36,7 @@ def teardown_request(exception):
     if hasattr(g, 'db'):
         g.db.close()
 
+
 @app.route('/', methods = ['GET', 'POST'])
 def main():
     """Main start page showing snapshot of standings"""
@@ -57,9 +58,9 @@ def headtohead():
 
 @app.route('/results', methods = ['GET', 'POST'])
 def results():
-    entries = query_db("""SELECT TeamID, OpponentID, Predicted
+    entries = query_db("""SELECT home, away, Prediction
             FROM Gamematrix WHERE
-            TeamID = ? AND OpponentID = ?""",
+            home = ? AND away = ?""",
             [request.form['home'], request.form['away']])
     away = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['away']])
