@@ -62,8 +62,8 @@
             <thead>
                 <tr><td><b>Home</td><td><b>Away</td><td><b>Prediction</td></tr>
                       <tbody>
-                      <tr><td><img src="10.png">
-                          <td><img src="1176.png"></tr>
+                      <tr><td><img src={{ homeurl }}>
+                          <td><img src={{ awayurl }}></tr>
                   {% for entry in entries %}
                     <tr><td>{{ home[0].teamName }}</td><td>{{ away[0].teamName}}</td><td>{{ entry.Prediction }}</td></tr>
                   {% endfor %}

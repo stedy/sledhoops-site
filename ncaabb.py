@@ -62,16 +62,20 @@ def headtohead():
 
 @app.route('/results', methods = ['GET', 'POST'])
 def results():
+    hometeam = request.form['home']
+    awayteam = request.form['away']
     entries = query_db("""SELECT home, away, Prediction
             FROM Gamematrix WHERE
             home = ? AND away = ?""",
-            [request.form['home'], request.form['away']])
+            [hometeam, awayteam])
     away = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['away']])
     home = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['home']])
+    homeurl = "http://sledhoops.net/" + hometeam.lstrip('0') + ".png"
+    awayurl = "http://sledhoops.net/" + awayteam.lstrip('0') + ".png"
     return render_template('results.html', entries = entries, home=home,
-            away=away)
+            away=away, homeurl=homeurl, awayurl=awayurl)
 
 if __name__ == '__main__':
     app.run()
