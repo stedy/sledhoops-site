@@ -100,22 +100,18 @@
             </thead>
             <tbody>
               <tr>
-                <td>Duke</td>
-                <td>UNC</td>
-                <td>Duke</td>
-                <td style="color:green">Duke</td>
-              </tr>
-              <tr>
                 <td>Washington State</td>
                 <td>Jacob from Lost</td>
                 <td>Jacob</td>
                 <td style="color:green">Jacob</td>
               </tr>
+              {% for result in results %}
               <tr>
-                <td>Stanford</td>
-                <td>UCLA</td>
-                <td>UCLA</td>
-                <td style="color:red">Stanford</td>
+                <td>{{ result.Team }}</td>
+                <td>{{ result.Opponent }}</td>
+                <td>{{ result.Predicted }}</td>
+                <td>{{ result.beatSpreadSLED }}</td>
+              {% endfor %}
               </tr>
             </tbody>
           </table>

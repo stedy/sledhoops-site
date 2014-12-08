@@ -1,6 +1,8 @@
+import datetime as dt
 import sqlite3
 from flask import Flask, g, render_template, request
 from contextlib import closing
+
 
 DATABASE = 'NCAABB.db'
 DEBUG = True
@@ -40,11 +42,13 @@ def teardown_request(exception):
 @app.route('/', methods = ['GET', 'POST'])
 def main():
     """Main start page showing snapshot of standings"""
+    yesterday = (dt.date.today() - dt.timedelta(1)).strftime("%Y-%m-%d")
     entries = query_db("""select TeamAway, TeamHome, spread FROM Spreads""",
                     one = False)
-    results = query_db("""SELECT TeamAway, TeamHome, spread, date,
-                        Predicted
-                        FROM Daily_Predictions""")
+    results = query_db("""SELECT Team, Opponent, spread, gameDate,
+                        Predicted, beatSpreadSLED
+                        FROM PredRes WHERE gameDate = ?""",
+                        [yesterday])
     return render_template('main.html', entries = entries, results=results)
 
 @app.route('/headtohead', methods = ['GET', 'POST'])
