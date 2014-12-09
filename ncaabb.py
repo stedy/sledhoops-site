@@ -77,5 +77,11 @@ def results():
     return render_template('results.html', entries = entries, home=home,
             away=away, homeurl=homeurl, awayurl=awayurl)
 
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
 if __name__ == '__main__':
     app.run()
