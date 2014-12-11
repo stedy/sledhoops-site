@@ -43,7 +43,7 @@ def teardown_request(exception):
 def main():
     """Main start page showing snapshot of standings"""
     yesterday = (dt.date.today() - dt.timedelta(1)).strftime("%Y-%m-%d")
-    entries = query_db("""select TeamAway, TeamHome, spread FROM Spreads""",
+    entries = query_db("""select TeamAway, TeamHome, spread, Predicted FROM Spreads""",
                     one = False)
     results = query_db("""SELECT Team, Opponent, spread, gameDate,
                         Predicted, beatSpreadSLED
