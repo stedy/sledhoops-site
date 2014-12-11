@@ -3,7 +3,8 @@
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='theme.min.css') }}">
-    {% for message in get_flashed_messages() %}
+
+   {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
 
     {% endfor %}
