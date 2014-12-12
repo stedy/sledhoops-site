@@ -68,7 +68,7 @@
               <tr>
                 <th>Home Team</th>
                 <th>Away Team</th>
-                <th>Differential</th>
+                <th>Spread</th>
                 <th>SLED</th>
               </tr>
             </thead>
@@ -78,7 +78,7 @@
                 <td>{{ entry.TeamHome }}</td>
                 <td>{{ entry.TeamAway }}</td>
                 <td>{{ entry.spread }}</td>
-                <td>{{ entry.Predicted }}</td>
+                <td>{{ entry.Predicted|round(2, 'floor') }}</td>
               </tr>
               {% endfor %}
             </tbody>
@@ -93,7 +93,7 @@
               <tr>
                 <th>Home Team</th>
                 <th>Away Team</th>
-                <th>Pick</th>
+                <th>SLED</th>
                 <th>Result</th>
               </tr>
             </thead>
@@ -108,7 +108,7 @@
               <tr>
                 <td>{{ result.Team }}</td>
                 <td>{{ result.Opponent }}</td>
-                <td>{{ result.Predicted }}</td>
+                <td>{{ result.Predicted|round(2, 'floor') }}</td>
                 <td>{{ result.beatSpreadSLED }}</td>
               {% endfor %}
               </tr>
