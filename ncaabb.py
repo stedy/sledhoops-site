@@ -64,9 +64,9 @@ def headtohead():
 def results():
     hometeam = request.form['home']
     awayteam = request.form['away']
-    entries = query_db("""SELECT home, away, Prediction
+    entries = query_db("""SELECT TeamID, OpponentID, Predicted
             FROM Gamematrix WHERE
-            home = ? AND away = ?""",
+            TeamID = ? AND OpponentID = ?""",
             [hometeam, awayteam])
     away = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['away']])
@@ -87,7 +87,6 @@ def rankings():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 if __name__ == '__main__':
     app.run()

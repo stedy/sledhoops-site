@@ -53,7 +53,7 @@
                       <tr><td><img src={{ homeurl }}>
                           <td><img src={{ awayurl }}></tr>
                   {% for entry in entries %}
-                    <tr><td>{{ home[0].teamName }}</td><td>{{ away[0].teamName}}</td><td>{{ entry.Prediction }}</td></tr>
+                    <tr><td>{{ home[0].teamName }}</td><td>{{ away[0].teamName}}</td><td>{{ entry.Predicted }}</td></tr>
                   {% endfor %}
                     </tbody>
              </table>
@@ -62,10 +62,6 @@
 
     </div> <!-- /container -->
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   </body>
