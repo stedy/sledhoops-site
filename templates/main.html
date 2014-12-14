@@ -31,7 +31,7 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
-            <li><a href="http://sledhoops.net/blog">Blog</a></li>
+            <li><a href="http://blog.sledhoops.net/">Blog</a></li>
             <li><a href="{{ url_for('headtohead') }}">Head to Head</a></li>
             <li><a href="{{ url_for('rankings') }}">Rankings</a></li>
             <li><a href="#detailedstats">Detailed Stats</a></li>
@@ -47,7 +47,9 @@
       <div class="jumbotron">
         <h1>Welcome to SLED Hoops!</h1>
         <p>Welcome to the SLED: Stednick Logsdon Expected Difference. The NCAA basketball predictions you can't get anywhere else.</p>
+        <p><a href="{{ url_for('about') }}" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
       </div>
+
     </div>
       <div class="col-xs-6">
         <h2 class="sub-header">Today's Picks</h2>
