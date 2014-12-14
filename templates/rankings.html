@@ -40,70 +40,32 @@
         </div><!--/.nav-collapse -->
       </div>
     </nav>
-
-    <div class="container theme-showcase" role="main">
-
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Welcome to SLED Hoops!</h1>
-        <p>Welcome to the SLED: Stednick Logsdon Expected Difference. The NCAA basketball predictions you can't get anywhere else.</p>
-      </div>
-    </div>
+    <br></br>
+    <br></br>
       <div class="col-xs-6">
-        <h2 class="sub-header">Today's Picks</h2>
+        <h2 class="sub-header">Current Rankings</h2>
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>Spread</th>
+                <th>Rank</th>
+                <th>Coaches Poll</th>
+                <th>AP Poll</th>
                 <th>SLED</th>
               </tr>
             </thead>
             <tbody>
             {% for entry in entries %}
               <tr>
-                <td>{{ entry.TeamHome }}</td>
-                <td>{{ entry.TeamAway }}</td>
-                <td>{{ entry.spread }}</td>
-                <td>{{ entry.Predicted|round(2, 'floor') }}</td>
+                <td>{{ entry.Rank }}</td>
+                <td>{{ entry.APPoll }}</td>
+                <td>{{ entry.CoachesPoll }}</td>
+                <td>{{ entry.SLEDMethod }}</td>
               </tr>
               {% endfor %}
             </tbody>
           </table>
         </div>
     </div>
-      <div class="col-xs-6">
-      <h2 class="sub-header">Yesterday's Results</h2>
-      <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>SLED</th>
-                <th>Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Washington State</td>
-                <td>Jacob from Lost</td>
-                <td>Jacob</td>
-                <td style="color:green">Jacob</td>
-              </tr>
-              {% for result in results %}
-              <tr>
-                <td>{{ result.Team }}</td>
-                <td>{{ result.Opponent }}</td>
-                <td>{{ result.Predicted|round(2, 'floor') }}</td>
-                <td>{{ result.beatSpreadSLED }}</td>
-              {% endfor %}
-              </tr>
-            </tbody>
-          </table>
-      </div>
-
     </div> <!-- /container -->
 
 

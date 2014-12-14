@@ -77,6 +77,12 @@ def results():
     return render_template('results.html', entries = entries, home=home,
             away=away, homeurl=homeurl, awayurl=awayurl)
 
+@app.route('/rankings', methods = ['GET', 'POST'])
+def rankings():
+    entries = query_db("""SELECT Rank, APPoll, CoachesPoll, "SLED.Method" as
+            SLEDMethod FROM Rankings""", one =
+            False)
+    return render_template('rankings.html', entries=entries)
 
 @app.route('/about')
 def about():
