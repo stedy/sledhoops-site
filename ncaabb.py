@@ -64,9 +64,9 @@ def headtohead():
 def results():
     hometeam = request.form['home']
     awayteam = request.form['away']
-    entries = query_db("""SELECT TeamID, OpponentID, Predicted
+    entries = query_db("""SELECT Home, Away, Prediction
             FROM Gamematrix WHERE
-            TeamID = ? AND OpponentID = ?""",
+            Home = ? AND away = ?""",
             [hometeam, awayteam])
     away = query_db("""SELECT teamName FROM Teams where TeamID = ?""",
             [request.form['away']])

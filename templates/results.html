@@ -29,10 +29,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{{ url_for('main') }}">Home</a></li>
+            <li><a href="{{ url_for('main') }}">Home</a></li>
             <li><a href="{{ url_for('about') }}">About</a></li>
             <li><a href="http://sledhoops.net/blog">Blog</a></li>
-            <li><a href="{{ url_for('headtohead') }}">Head to Head</a></li>
+            <li class="active"><a href="{{ url_for('headtohead') }}">Head to Head</a></li>
             <li><a href="{{ url_for('rankings') }}">Rankings</a></li>
             <li><a href="#detailedstats">Detailed Stats</a></li>
 
@@ -53,7 +53,7 @@
                       <tr><td><img src={{ homeurl }}>
                           <td><img src={{ awayurl }}></tr>
                   {% for entry in entries %}
-                    <tr><td>{{ home[0].teamName }}</td><td>{{ away[0].teamName}}</td><td>{{ entry.Predicted }}</td></tr>
+                    <tr><td>{{ home[0].teamName }}</td><td>{{ away[0].teamName}}</td><td>{{ entry.Prediction }}</td></tr>
                   {% endfor %}
                     </tbody>
              </table>
