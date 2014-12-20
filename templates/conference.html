@@ -14,6 +14,7 @@
   </head>
 
 {% block body %}
+<form action="{{ url_for('conference') }}" method=post>
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -43,69 +44,43 @@
 
     <div class="container theme-showcase" role="main">
 
-      <div class="jumbotron">
-        <h1>Welcome to SLED Hoops!</h1>
-        <p>Welcome to the SLED: Stednick Logsdon Expected Difference. The NCAA basketball predictions you can't get anywhere else.</p>
-        <p><a href="{{ url_for('about') }}" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-      </div>
 
     </div>
-      <div class="col-xs-6">
-        <h2 class="sub-header">Today's Picks</h2>
+    <br></br>
+   <div class="row">
+      <div class="col-lg-5 col-lg-offset-4">
+        <h2 class="sub-header">Current SLED scores for {{confname}}</h2>
           <table class="table table-striped">
             <thead>
               <tr>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>Spread</th>
-                <th>SLED</th>
-              </tr>
-            </thead>
-            <tbody>
-            {% for entry in entries %}
-              <tr>
-                <td>{{ entry.TeamHome }}</td>
-                <td>{{ entry.TeamAway }}</td>
-                <td>{{ entry.spread }}</td>
-                <td>{{ entry.Predicted|round(2, 'floor') }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-    </div>
-      <div class="col-xs-6">
-      <h2 class="sub-header">Yesterday's Results</h2>
-      <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Home Team</th>
-                <th>Away Team</th>
-                <th>SLED</th>
-                <th>Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Washington State</td>
-                <td>Jacob from Lost</td>
-                <td>Jacob</td>
-                <td style="color:green">Jacob</td>
-              </tr>
-              {% for result in results %}
-              <tr>
-                <td>{{ result.Team }}</td>
-                <td>{{ result.Opponent }}</td>
-                <td>{{ result.Predicted|round(2, 'floor') }}</td>
-                <td>{{ result.beatSpreadSLED }}</td>
-              {% endfor %}
-              </tr>
-            </tbody>
-          </table>
-      </div>
+                <th>Team</th>
 
+                <th>SLED</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for conf in conferences %}
+              <tr>
+                <td>{{ conf.teamName }}</td>
+                <td>{{ conf.SLED|round(2, 'floor') }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
     </div>
+    </div>
+   <div class="row">
+  <div class="col-lg-5 col-lg-offset-4">
+    <div class="panel panel-default">
+        <div class="panel-body">
+          <h3>Select a conference from the dropdown menu for overview</h3>
+                  <select name=conference>
+                  {% for entry in entries %}
+                      <option value="{{ entry.Conference }}">{{ entry.Conference }}</option>
+                  {% endfor %}
+                  </select>
+                    <input type=submit value="Submit">
+                 </form>
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

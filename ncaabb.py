@@ -1,8 +1,9 @@
 import datetime as dt
 import sqlite3
+import time
 from flask import Flask, g, render_template, request
 from contextlib import closing
-
+from math import floor
 
 DATABASE = 'NCAABB.db'
 DEBUG = True
@@ -87,6 +88,24 @@ def rankings():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route('/detailedstats', methods = ['GET', 'POST'])
+def detailedstats():
+    entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""", one =
+            False)
+    return render_template('detailedstats.html', entries=entries)
+
+@app.route('/conference', methods = ['GET', 'POST'])
+def conference():
+    posix = floor(time.mktime(dt.datetime.now().timetuple())/(60*60*24)) - 1
+    conferences = query_db("""SELECT teamName, SLED from Conferences, SLEDs WHERE
+            Conferences.TeamID = SLEDs.TeamID AND Conference = ? AND
+            SLEDs.Calc_Date = ? AND SLEDs.method = "calc3" ORDER BY SLEDs.SLED DESC""",
+            [request.form['conference'], posix])
+    entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""", one =
+            False)
+    return render_template('conference.html', conferences=conferences, entries=entries,
+            confname=request.form['conference'])
 
 if __name__ == '__main__':
     app.run()
