@@ -83,21 +83,17 @@
                 <th>Home Team</th>
                 <th>Away Team</th>
                 <th>SLED</th>
-                <th>Result</th>
+                <th>Actual</th>
+                <th>Performance</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Washington State</td>
-                <td>Jacob from Lost</td>
-                <td>Jacob</td>
-                <td style="color:green">Jacob</td>
-              </tr>
               {% for result in results %}
               <tr>
                 <td>{{ result.Team }}</td>
                 <td>{{ result.Opponent }}</td>
                 <td>{{ result.Predicted|round(2, 'floor') }}</td>
+                <td>{{ result.Differential }}</td>
                 <td>{{ result.beatSpreadSLED }}</td>
               {% endfor %}
               </tr>

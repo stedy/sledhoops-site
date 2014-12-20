@@ -47,6 +47,7 @@ def main():
     entries = query_db("""select TeamAway, TeamHome, spread, Predicted FROM Spreads""",
                     one = False)
     results = query_db("""SELECT Team, Opponent, spread, gameDate,
+                        Differential,
                         Predicted, beatSpreadSLED
                         FROM PredRes WHERE gameDate = ?""",
                         [yesterday])
