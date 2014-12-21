@@ -98,7 +98,8 @@ def detailedstats():
 
 @app.route('/conference', methods = ['GET', 'POST'])
 def conference():
-    posix = floor(time.mktime(dt.datetime.now().timetuple())/(60*60*24)) - 1
+    posix = query_db("""SELECT MAX(Calc_Date) AS md FROM SLEDs""")
+    posix = posix[0]['md']
     conferences = query_db("""SELECT teamName, SLED from Conferences, SLEDs WHERE
             Conferences.TeamID = SLEDs.TeamID AND Conference = ? AND
             SLEDs.Calc_Date = ? AND SLEDs.method = "calc3" ORDER BY SLEDs.SLED DESC""",
