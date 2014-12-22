@@ -92,23 +92,16 @@ def about():
 
 @app.route('/detailedstats', methods=['GET', 'POST'])
 def detailedstats():
-    entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""", one =
-            False)
-    return render_template('detailedstats.html', entries=entries)
-
-@app.route('/conference', methods=['GET', 'POST'])
-def conference():
     posix = query_db("""SELECT MAX(Calc_Date) AS md FROM SLEDs""")
     posix = posix[0]['md']
-    conferences = g.db.execute("""SELECT teamName, SLED, conference FROM
+    allconferences = g.db.execute("""SELECT teamName, SLED, conference FROM
             Conferences, SLEDs WHERE
-            Conferences.TeamID=SLEDs.TeamID AND Conference=? AND
+            Conferences.TeamID=SLEDs.TeamID AND
             SLEDs.Calc_Date=? AND SLEDs.method="calc3"
             ORDER BY SLEDs.SLED DESC""",
-            [request.form['conference'], posix])
-    entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""")
+            [posix])
     return jsonify(dict(('item%d' % i, item)
-                                for i, item in enumerate(conferences.fetchall(),
+                                for i, item in enumerate(allconferences.fetchall(),
                                     start=1)))
 
 if __name__ == '__main__':
