@@ -1,0 +1,46 @@
+<component name="libraryTable">
+  <library name="angularjs" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-messages.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-cookies.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-loader.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-animate.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-sanitize.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-resource.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-mocks.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-scenario.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-touch.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-route.js" />
+        <item url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-aria.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-messages.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-cookies.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-animate.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-loader.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-animate.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-resource.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-aria.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-resource.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-mocks.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-touch.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-route.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-aria.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-cookies.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-sanitize.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-messages.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-sanitize.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-touch.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-loader.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-route.min.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular-scenario.js" />
+      <root url="file://$PROJECT_DIR$/../../Vb/VbDb/trunk/VB.Web/Scripts/AngularJS1.3.8/angular.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -53,37 +53,50 @@
       </div>
     </nav>
 
-    <div class="container theme-showcase" role="main">
-      <br></br>
-      <br></br>
+  {% raw %}
+  <div ng-app="sled">
+    <div ng-controller="HeadToHead">
+      <div class="container theme-showcase" role="main">
+        <div class="row">
+          <div class="col-xs-4">
+            <input type="text" id="homeTypeahead" />
+          </div>
+          <div class="col-xs-2">
+            <span>@</span>
+          </div>
+          <div class="col-xs-4">
+            <input type="text" id="awayTypeahead" />
+          </div>
+        </div>
+        <div class="row">
+          <span class="col-xs-12">
+            {{ line }}
+          </span>
+        </div>
+      </div> <!-- /container -->
     </div>
-      <div class="col-md-3">
-          <table class="table table-striped">
-            <thead>
+  </div>
+  {% endraw %}
 
-              <form action="{{url_for('results') }}" method=post>
-                  <table>
-                    <tr><td><b>Home Team</td>
-                    <td><b>Away Team</td></tr>
-                    <td><select name=home>
-                      {% for entry in homeentries %}
-                        <option value = "{{ entry.TeamID }}"> {{ entry.teamName }}</option>
-                      {% endfor %}
-                    </select>
-                    <td><select name=away>
-                      {% for entry in awayentries %}
-                        <option value = "{{ entry.TeamID }}"> {{ entry.teamName }}</option>
-                      {% endfor %}
-                    </select>
-                  </table>
-                <br></br>
-               <td><input type=submit value="Get SLED score">
-             </form>
-          {% endblock %}
+  <div style="display:none" id="teamsData">
+    {{ teams }}
+  </div>
 
-    </div> <!-- /container -->
+  <div style="display:none" id="predictionsData">
+    {{ predictions }}
+  </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-  </body>
+  <script type="text/javascript"
+          src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript"
+          src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+  <script type="text/javascript"
+          src="{{ url_for('static', filename='typeahead.jquery.js') }}"></script>
+  <script type="text/javascript"
+          src="{{ url_for('static', filename='headtohead.js') }}"></script>
+  {% endblock %}
 </html>

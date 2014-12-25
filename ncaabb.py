@@ -55,10 +55,14 @@ def main():
 
 @app.route('/headtohead', methods=['GET', 'POST'])
 def headtohead():
-    allteams = g.db.execute("""Select Home, Away, Prediction from Gamematrix""")
-    return jsonify(dict(('item%d' % i, item)
-                                for i, item in enumerate(allteams.fetchall(),
-                                    start=1)))
+    import json
+    predictions = g.db.execute("""Select Home, Away, Prediction from Gamematrix""")
+    predictionsJson = json.dumps(predictions.fetchall())
+    teams = g.db.execute("""SELECT TeamID, teamName FROM Teams""")
+    teamsJson = json.dumps(teams.fetchall())
+    return render_template('headtohead.html',
+                           predictions=predictionsJson,
+                           teams=teamsJson)
 
 #@app.route('/results', methods=['GET', 'POST'])
 #def results():
