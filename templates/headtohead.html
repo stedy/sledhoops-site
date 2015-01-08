@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <!-- link href="/css/bootstrap.min.css" rel="stylesheet" -->
     <!-- Bootstrap theme -->
-    <!-- link href="/css/bootstrap-theme.min.css" rel="stylesheet"-->
+    <!-- link href="/css/theme.min.css" rel="stylesheet"-->
 
     <!-- Custom styles for this template -->
     <!-- link href="theme.css" rel="stylesheet" -->
@@ -54,26 +54,34 @@
     </nav>
 
   {% raw %}
-  <div ng-app="sled">
-    <div ng-controller="HeadToHead">
-      <div class="container theme-showcase" role="main">
-        <div class="row">
-          <div class="col-xs-4">
-            <input type="text" id="homeTypeahead" />
-          </div>
-          <div class="col-xs-2">
-            <span>@</span>
-          </div>
-          <div class="col-xs-4">
-            <input type="text" id="awayTypeahead" />
-          </div>
+  <div class="container head-to-head-container">
+    <div class="jumbotron">
+      <div ng-app="sled">
+        <div ng-controller="HeadToHead">
+          <div class="container theme-showcase" role="main">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <input type="text" id="homeTypeahead" class="typeahead form-control" />
+                </div>
+              </div>
+              <div class="col-xs-2">
+                <span>@</span>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <input type="text" id="awayTypeahead" class="typeahead form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <span class="col-xs-12">
+                {{ line }}
+              </span>
+            </div>
+          </div> <!-- /container -->
         </div>
-        <div class="row">
-          <span class="col-xs-12">
-            {{ line }}
-          </span>
-        </div>
-      </div> <!-- /container -->
+      </div>
     </div>
   </div>
   {% endraw %}

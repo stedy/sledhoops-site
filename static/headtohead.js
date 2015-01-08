@@ -70,6 +70,7 @@ headToHeadController.controller('HeadToHead', [
             };
 
             home.typeahead({
+                name:'home',
                 highlight:false,
                 hint:true,
                 minLength:3
@@ -89,6 +90,7 @@ headToHeadController.controller('HeadToHead', [
                 });
 
             away.typeahead({
+                name:'away',
                 highlight:false,
                 hint:true,
                 minLength:3
@@ -106,6 +108,9 @@ headToHeadController.controller('HeadToHead', [
                     awayTeam = suggestion;
                     getLine();
                 });
+
+            $('.typeahead.input-sm').siblings('input.tt-hint').addClass('hint-small');
+            $('.typeahead.input-lg').siblings('input.tt-hint').addClass('hint-large');
         }
 
         function getLine()
