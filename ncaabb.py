@@ -79,15 +79,6 @@ def about():
 def detailedstats():
     posix = query_db("""SELECT MAX(Calc_Date) AS md FROM SLEDs""")
     posix = posix[0]['md']
-#    allconferences = g.db.execute("""SELECT teamName, SLED, conference FROM
-#            Conferences, SLEDs WHERE
-#            Conferences.TeamID=SLEDs.TeamID AND
-#            SLEDs.Calc_Date=? AND SLEDs.method="calc3"
-#            ORDER BY SLEDs.SLED DESC""",
-#            [posix])
-#    return jsonify(dict(('item%d' % i, item)
-#                                for i, item in enumerate(allconferences.fetchall(),
-#                                    start=1)))
     entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""",
             one = False)
     return render_template('detailedstats.html', entries=entries)
