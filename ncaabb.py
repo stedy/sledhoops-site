@@ -1,5 +1,6 @@
 import datetime as dt
 import sqlite3
+import json
 import time
 from flask import Flask, g, render_template, request, jsonify
 from contextlib import closing
@@ -55,7 +56,6 @@ def main():
 
 @app.route('/headtohead', methods=['GET', 'POST'])
 def headtohead():
-    import json
     predictions = g.db.execute("""Select Home, Away, Prediction from Gamematrix""")
     predictionsJson = json.dumps(predictions.fetchall())
     teams = g.db.execute("""SELECT TeamID, teamName FROM Teams""")
@@ -63,23 +63,6 @@ def headtohead():
     return render_template('headtohead.html',
                            predictions=predictionsJson,
                            teams=teamsJson)
-
-#@app.route('/results', methods=['GET', 'POST'])
-#def results():
-#    hometeam = request.form['home']
-#    awayteam = request.form['away']
-#    entries = query_db("""SELECT Home, Away, Prediction
-#            FROM Gamematrix WHERE
-#            Home=? AND away=?""",
-#            [hometeam, awayteam])
-#    away = query_db("""SELECT teamName FROM Teams where TeamID=?""",
-#            [request.form['away']])
-#    home = query_db("""SELECT teamName FROM Teams where TeamID=?""",
-#            [request.form['home']])
-#    homeurl = "http://sledhoops.net/" + hometeam.lstrip('0') + ".png"
-#    awayurl = "http://sledhoops.net/" + awayteam.lstrip('0') + ".png"
-#    return render_template('results.html', entries=entries, home=home,
-#            away=away, homeurl=homeurl, awayurl=awayurl)
 
 @app.route('/rankings', methods=['GET', 'POST'])
 def rankings():
@@ -96,15 +79,31 @@ def about():
 def detailedstats():
     posix = query_db("""SELECT MAX(Calc_Date) AS md FROM SLEDs""")
     posix = posix[0]['md']
-    allconferences = g.db.execute("""SELECT teamName, SLED, conference FROM
-            Conferences, SLEDs WHERE
-            Conferences.TeamID=SLEDs.TeamID AND
-            SLEDs.Calc_Date=? AND SLEDs.method="calc3"
-            ORDER BY SLEDs.SLED DESC""",
-            [posix])
-    return jsonify(dict(('item%d' % i, item)
-                                for i, item in enumerate(allconferences.fetchall(),
-                                    start=1)))
+#    allconferences = g.db.execute("""SELECT teamName, SLED, conference FROM
+#            Conferences, SLEDs WHERE
+#            Conferences.TeamID=SLEDs.TeamID AND
+#            SLEDs.Calc_Date=? AND SLEDs.method="calc3"
+#            ORDER BY SLEDs.SLED DESC""",
+#            [posix])
+#    return jsonify(dict(('item%d' % i, item)
+#                                for i, item in enumerate(allconferences.fetchall(),
+#                                    start=1)))
+    entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""",
+            one = False)
+    return render_template('detailedstats.html', entries=entries)
+
+@app.route('/conference', methods = ['GET', 'POST'])
+def conference():
+    posix = floor(time.mktime(dt.datetime.now().timetuple())/(60*60*24)) - 1
+    conferences = query_db("""SELECT teamName, SLED from Conferences,
+        SLEDs WHERE
+        Conferences.TeamID = SLEDs.TeamID AND Conference = ?
+        AND SLEDs.Calc_Date = ? AND SLEDs.method =
+        "calc3" ORDER BY SLEDs.SLED DESC""", [request.form['conference'], posix])
+    entries = query_db("""SELECT DISTINCT(Conference) FROM Conferences""", one =
+        False)
+    return render_template('conference.html', conferences=conferences,
+        entries=entries, confname=request.form['conference'])
 
 if __name__ == '__main__':
     app.run()
