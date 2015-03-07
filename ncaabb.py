@@ -85,7 +85,7 @@ def detailedstats():
 
 @app.route('/conference', methods = ['GET', 'POST'])
 def conference():
-    posix = floor(time.mktime(dt.datetime.now().timetuple())/(60*60*24)) - 1
+    posix = floor(time.mktime(dt.datetime.now().timetuple())/(60*60*24)) - 2
     conferences = query_db("""SELECT teamName, SLED from Conferences,
         SLEDs WHERE
         Conferences.TeamID = SLEDs.TeamID AND Conference = ?
